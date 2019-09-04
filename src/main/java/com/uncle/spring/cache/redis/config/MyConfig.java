@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.uncle.spring.cache.redis.config;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;

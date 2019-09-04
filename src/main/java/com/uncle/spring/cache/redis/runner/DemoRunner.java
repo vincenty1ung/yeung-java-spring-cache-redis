@@ -1,7 +1,7 @@
-package com.example.demo.runner;
+package com.uncle.spring.cache.redis.runner;
 
-import com.example.demo.eo.BookBO;
-import com.example.demo.service.IBookService;
+import com.uncle.spring.cache.redis.eo.BookBO;
+import com.uncle.spring.cache.redis.service.IBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

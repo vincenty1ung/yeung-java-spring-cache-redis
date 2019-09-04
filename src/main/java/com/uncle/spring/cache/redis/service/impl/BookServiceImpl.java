@@ -1,7 +1,7 @@
-package com.example.demo.service.impl;
+package com.uncle.spring.cache.redis.service.impl;
 
-import com.example.demo.eo.BookBO;
-import com.example.demo.service.IBookService;
+import com.uncle.spring.cache.redis.eo.BookBO;
+import com.uncle.spring.cache.redis.service.IBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

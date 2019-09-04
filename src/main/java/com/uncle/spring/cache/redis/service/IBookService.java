@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.uncle.spring.cache.redis.service;
 
-import com.example.demo.eo.BookBO;
+import com.uncle.spring.cache.redis.eo.BookBO;
 
 /**
  * @author 杨戬

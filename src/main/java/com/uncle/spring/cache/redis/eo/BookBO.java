@@ -1,4 +1,4 @@
-package com.example.demo.eo;
+package com.uncle.spring.cache.redis.eo;
 
 import lombok.*;
 
