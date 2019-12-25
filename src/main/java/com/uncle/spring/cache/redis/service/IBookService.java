@@ -29,5 +29,5 @@ public interface IBookService {
      *
      * @param bookBO 书名
      */
-    String add(BookBO bookBO);
+    BookBO add(BookBO bookBO);
 }

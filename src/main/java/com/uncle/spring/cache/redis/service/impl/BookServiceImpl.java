@@ -35,9 +35,9 @@ public class BookServiceImpl implements IBookService {
 
     @Override
     @CachePut(value = "txt:books",key = "#result.name" ,condition = "#result!=null")
-    public String add(BookBO bo) {
+    public BookBO add(BookBO bo) {
         log.info("添加当前书籍[{}-添加缓存]", bo);
-        return "";
+        return bo;
     }
 
     private void sleep() {

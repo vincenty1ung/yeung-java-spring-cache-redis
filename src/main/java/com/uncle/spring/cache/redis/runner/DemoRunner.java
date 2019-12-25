@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 @Order(15)
 @Component
 public class DemoRunner implements CommandLineRunner {
-    private final static String BOOK_NAME_YI = "一万个理由";
-    private final static String BOOK_NAME_SAN = "三万个理由";
+    private final static String BOOK_NAME_YI = "everything";
+    private final static String BOOK_NAME_SAN = "everything2";
     @Autowired
     private IBookService bookService;
 

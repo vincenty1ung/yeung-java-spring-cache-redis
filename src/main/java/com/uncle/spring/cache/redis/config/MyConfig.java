@@ -4,17 +4,15 @@ import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 杨戬
@@ -41,10 +39,19 @@ public class MyConfig {
 
     @Primary
     @Bean
-    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+    public CacheManager cacheManager(RedisTemplate redisTemplate) {
+        //spring-boot 1.5.x版本
+        RedisCacheManager redisCacheManager = new RedisCacheManager(redisTemplate);
+        //默认超时时间，单位秒
+        redisCacheManager.setDefaultExpiration(30);
+        //缓存超时时间Map，key为cacheName，value为超时,单位是秒
+        Map<String, Long> expiresMap = new HashMap<>();
+        //缓存用户信息的cacheName和超时时间
+        redisCacheManager.setExpires(expiresMap);
+       /*
+       spring-boot 2.x版本
         //缓存配置对象
-        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
-
+        RedisCacheManager redisCacheConfiguration = RedisCacheManager.defaultCacheConfig();
         //设置缓存的默认超时时间：30分钟
         //如果是空值，不缓存
         //设置key序列化器
@@ -56,7 +63,8 @@ public class MyConfig {
 
         return RedisCacheManager
                 .builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
-                .cacheDefaults(redisCacheConfiguration).build();
+                .cacheDefaults(redisCacheConfiguration).build();*/
+       return redisCacheManager;
     }
 
     private RedisSerializer<String> keySerializer() {
